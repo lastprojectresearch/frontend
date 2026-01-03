@@ -5,6 +5,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MapScreen from './screens/MapScreen';
 import HomeScreen from './screens/HomeScreen';
 import BottomNavigation from './components/BottomNavigation';
+import Home from './screens/Home';
+
+
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +23,8 @@ export default function App() {
         <Tab.Screen name="DriverAnalytics" component={PlaceholderScreen} options={{ title: 'Driver Analytics' }} />
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Emergency" component={PlaceholderScreen} options={{ title: 'Emergency Response' }} />
-        <Tab.Screen name="Environment" component={PlaceholderScreen} options={{ title: 'Environment Analytics' }} />
+        <Tab.Screen name="Environment" component={Home} />
+        
       </Tab.Navigator>
     </NavigationContainer>
   );
