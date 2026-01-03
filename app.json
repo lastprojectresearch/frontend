@@ -1,9 +1,10 @@
 {
   "expo": {
-    "name": "ride-safe",
-    "slug": "ride-safe",
+    "name": "ANZEN",
+    "slug": "ANZEN",
     "version": "1.0.0",
     "orientation": "portrait",
+    "jsEngine": "jsc",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
