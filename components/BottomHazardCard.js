@@ -52,9 +52,13 @@ export default function BottomHazardCard({ selectedHazard, onClose, calculateDis
 }
 
 const styles = StyleSheet.create({
-  modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.5)' },
+  modalOverlay: { 
+    flex: 1, 
+    justifyContent: 'flex-end', 
+    backgroundColor: 'rgba(0,0,0,0.5)' 
+  },
   bottomCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E293B', // Secondary: Slate Blue
     padding: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -65,7 +69,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   cardTitle: { 
-    color: '#FF0000', 
+    color: '#EF4444', // Danger: Red
     fontSize: 20, 
     fontWeight: 'bold',
     marginBottom: 10,
@@ -77,7 +81,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   infoText: {
-    color: '#333333',
+    color: '#F8FAFC', // Light text for contrast
     fontSize: 16,
   },
   cardImage: { 
@@ -92,19 +96,19 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   ignoreButton: { 
-    backgroundColor: '#807676ff', 
+    backgroundColor: '#0F172A', // Primary: Deep Navy
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 25,
   },
   avoidButton: { 
-    backgroundColor: '#FF0000', 
+    backgroundColor: '#22C55E', // Accent: Green
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 25,
   },
   buttonText: { 
-    color: '#FFFFFF', 
+    color: '#F8FAFC', // Light text
     fontWeight: 'bold',
     fontSize: 16,
   },

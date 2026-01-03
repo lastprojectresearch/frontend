@@ -8,9 +8,9 @@ import BottomHazardCard from '../components/BottomHazardCard';
 const { width, height } = Dimensions.get('window');
 
 const HAZARD_COLORS = {
-  police: '#FF0000',  // Red
-  construction: '#FFFF00',  // Yellow
-  pothole: '#800080',  // Purple
+  police: '#FF0000', // Red (unchanged)
+  construction: '#FFFF00', // Yellow (unchanged)
+  pothole: '#800080', // Purple (unchanged)
 };
 
 const hardcodedHazards = [
@@ -26,9 +26,9 @@ const hardcodedHazards = [
   { id: 10, type: 'police', latitude: 7.2105, longitude: 79.8355, timestamp: new Date(Date.now() - 5 * 3600000), image: 'https://picsum.photos/100/100?random=10' },
 ];
 
-const DESTINATION = { latitude: 7.2167, longitude: 79.8333 };  // Negombo Beach
+const DESTINATION = { latitude: 7.2167, longitude: 79.8333 }; // Negombo Beach
 
-const GOOGLE_API_KEY = 'YOUR_GOOGLE_API_KEY_HERE';  // Replace with your key
+const GOOGLE_API_KEY = 'YOUR_GOOGLE_API_KEY_HERE'; // Replace with your key
 
 function decodePolyline(encoded) {
   let index = 0, lat = 0, lng = 0;
@@ -187,19 +187,19 @@ export default function MapScreen() {
       <View style={styles.legend}>
         <View style={styles.legendItem}>
           <View style={[styles.legendDot, { backgroundColor: 'cyan' }]} />
-          <Text>Current location</Text>
+          <Text style={styles.legendText}>Current location</Text>
         </View>
         <View style={styles.legendItem}>
           <View style={[styles.legendDot, { backgroundColor: '#FF0000' }]} />
-          <Text>Police</Text>
+          <Text style={styles.legendText}>Police</Text>
         </View>
         <View style={styles.legendItem}>
           <View style={[styles.legendDot, { backgroundColor: '#FFFF00' }]} />
-          <Text>Construction Zone</Text>
+          <Text style={styles.legendText}>Construction Zone</Text>
         </View>
         <View style={styles.legendItem}>
           <View style={[styles.legendDot, { backgroundColor: '#800080' }]} />
-          <Text>Bad condition (Pothole)</Text>
+          <Text style={styles.legendText}>Bad condition (Pothole)</Text>
         </View>
       </View>
 
@@ -214,13 +214,16 @@ export default function MapScreen() {
         onAvoid={handleAvoid}
       />
 
-      {errorMsg && <Text>{errorMsg}</Text>}
+      {errorMsg && <Text style={styles.errorMsg}>{errorMsg}</Text>}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { 
+    flex: 1, 
+    backgroundColor: '#F8FAFC' // Background: Light Gray
+  },
   map: { width, height },
   topBar: {
     position: 'absolute',
@@ -228,7 +231,7 @@ const styles = StyleSheet.create({
     left: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#1E293B', // Secondary: Slate Blue
     padding: 10,
     borderRadius: 20,
     shadowColor: '#000',
@@ -236,12 +239,16 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
   },
   profilePic: { width: 40, height: 40, borderRadius: 20, marginRight: 10 },
-  greeting: { fontSize: 18, fontWeight: 'bold' },
+  greeting: { 
+    fontSize: 18, 
+    fontWeight: 'bold', 
+    color: '#F8FAFC' // Light text for contrast on Secondary
+  },
   legend: {
     position: 'absolute',
     top: height / 2,
     right: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#1E293B', // Secondary: Slate Blue
     padding: 10,
     borderRadius: 10,
     shadowColor: '#000',
@@ -250,11 +257,14 @@ const styles = StyleSheet.create({
   },
   legendItem: { flexDirection: 'row', alignItems: 'center', marginBottom: 5 },
   legendDot: { width: 10, height: 10, borderRadius: 5, marginRight: 5 },
+  legendText: {
+    color: '#F8FAFC' // Light text for contrast
+  },
   recenterButton: {
     position: 'absolute',
     bottom: 100,
     right: 20,
-    backgroundColor: 'white',
+    backgroundColor: '#22C55E', // Accent: Green
     padding: 10,
     borderRadius: 20,
     shadowColor: '#000',
@@ -264,5 +274,12 @@ const styles = StyleSheet.create({
   recenterText: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#F8FAFC' // Light text
   },
+  errorMsg: {
+    color: '#EF4444', // Danger: Red
+    position: 'absolute',
+    bottom: 150,
+    alignSelf: 'center'
+  }
 });
