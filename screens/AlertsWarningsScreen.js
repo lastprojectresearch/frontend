@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function AlertsWarningsScreen() {
+export default function AlertsWarningsScreen({ navigation }) {
   return (
     <ScrollView
       style={{
@@ -23,7 +23,9 @@ export default function AlertsWarningsScreen() {
           marginBottom: 24,
         }}
       >
-        <Text style={{ fontSize: 22, marginRight: 12 }}>←</Text>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={{ fontSize: 22, marginRight: 12 }}>←</Text>
+        </TouchableOpacity>
         <Text
           style={{
             fontSize: 20,
@@ -44,7 +46,7 @@ export default function AlertsWarningsScreen() {
           marginBottom: 16,
         }}
       >
-        Today’s Safety Summary
+        Today's Safety Summary
       </Text>
 
       {/* Summary Cards */}

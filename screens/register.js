@@ -1,6 +1,16 @@
 import { View, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
 
-export default function RegisterScreen() {
+export default function RegisterScreen({ navigation }) {
+  const handleSignUp = () => {
+    // Add your sign-up logic here (e.g., API call)
+    // Then navigate to Login
+    navigation.navigate('Login');
+  };
+
+  const handleAlreadyHaveAccount = () => {
+    navigation.navigate('Login');
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{
@@ -8,6 +18,7 @@ export default function RegisterScreen() {
         backgroundColor: "#ffffff",
         paddingHorizontal: 24,
         paddingTop: 60,
+        paddingBottom: 40,
       }}
     >
       {/* Header */}
@@ -113,6 +124,7 @@ export default function RegisterScreen() {
           shadowRadius: 12,
           elevation: 6,
         }}
+        onPress={handleSignUp}
       >
         <Text
           style={{
@@ -126,7 +138,10 @@ export default function RegisterScreen() {
       </TouchableOpacity>
 
       {/* Already Have Account */}
-      <TouchableOpacity style={{ marginTop: 26, alignItems: "center" }}>
+      <TouchableOpacity 
+        style={{ marginTop: 26, alignItems: "center" }}
+        onPress={handleAlreadyHaveAccount}
+      >
         <Text
           style={{
             color: "#6B7280",
@@ -157,7 +172,7 @@ export default function RegisterScreen() {
             gap: 16,
           }}
         >
-          {["G", "f", ""].map((icon, index) => (
+          {["G", "f", "X"].map((icon, index) => (
             <TouchableOpacity
               key={index}
               style={{
@@ -177,7 +192,6 @@ export default function RegisterScreen() {
                 }}
               >
                 {icon}
-	tr
               </Text>
             </TouchableOpacity>
           ))}

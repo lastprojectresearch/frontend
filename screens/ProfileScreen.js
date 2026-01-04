@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ navigation }) {
   return (
     <ScrollView
       style={{
@@ -25,15 +25,23 @@ export default function ProfileScreen() {
           marginBottom: 30,
         }}
       >
-        <Text
-          style={{
-            fontSize: 22,
-            fontWeight: "700",
-            color: "#111827",
-          }}
-        >
-          Profile
-        </Text>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <TouchableOpacity 
+            onPress={() => navigation.goBack()}
+            style={{ marginRight: 12 }}
+          >
+            <Text style={{ fontSize: 24 }}>←</Text>
+          </TouchableOpacity>
+          <Text
+            style={{
+              fontSize: 22,
+              fontWeight: "700",
+              color: "#111827",
+            }}
+          >
+            Profile
+          </Text>
+        </View>
 
         <Text style={{ fontSize: 18 }}>🔔</Text>
       </View>

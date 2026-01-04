@@ -1,6 +1,16 @@
 import { View, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
+  const handleSignIn = () => {
+    // Add your login logic here (e.g., API call, authentication)
+    // Then navigate to MainTabs (Home)
+    navigation.replace('MainTabs', { screen: 'Home' });
+  };
+
+  const handleCreateAccount = () => {
+    navigation.navigate('Register');
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{
@@ -8,6 +18,7 @@ export default function LoginScreen() {
         backgroundColor: "#ffffff",
         paddingHorizontal: 24,
         paddingTop: 60,
+        paddingBottom: 40,
       }}
     >
       {/* Header */}
@@ -30,7 +41,7 @@ export default function LoginScreen() {
             textAlign: "center",
           }}
         >
-          Welcome back you’ve been missed!
+          Welcome back you've been missed!
         </Text>
       </View>
 
@@ -49,6 +60,8 @@ export default function LoginScreen() {
         <TextInput
           placeholder="Email"
           placeholderTextColor="#6B7280"
+          keyboardType="email-address"
+          autoCapitalize="none"
           style={{
             fontSize: 16,
             color: "#111827",
@@ -103,6 +116,7 @@ export default function LoginScreen() {
           shadowRadius: 12,
           elevation: 6,
         }}
+        onPress={handleSignIn}
       >
         <Text
           style={{
@@ -116,7 +130,10 @@ export default function LoginScreen() {
       </TouchableOpacity>
 
       {/* Create Account */}
-      <TouchableOpacity style={{ marginTop: 24, alignItems: "center" }}>
+      <TouchableOpacity 
+        style={{ marginTop: 24, alignItems: "center" }}
+        onPress={handleCreateAccount}
+      >
         <Text
           style={{
             color: "#6B7280",
@@ -147,7 +164,7 @@ export default function LoginScreen() {
             gap: 16,
           }}
         >
-          {["G", "f", ""].map((icon, index) => (
+          {["G", "f", "X"].map((icon, index) => (
             <TouchableOpacity
               key={index}
               style={{

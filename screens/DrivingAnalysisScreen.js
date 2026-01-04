@@ -5,8 +5,11 @@ import {
   TouchableOpacity,
   Switch,
 } from "react-native";
+import { useState } from "react";
 
-export default function DrivingAnalysisScreen() {
+export default function DrivingAnalysisScreen({ navigation }) {
+  const [cameraEnabled, setCameraEnabled] = useState(true);
+
   return (
     <ScrollView
       style={{
@@ -24,7 +27,9 @@ export default function DrivingAnalysisScreen() {
           marginBottom: 24,
         }}
       >
-        <Text style={{ fontSize: 22, marginRight: 12 }}>←</Text>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={{ fontSize: 22, marginRight: 12 }}>←</Text>
+        </TouchableOpacity>
         <Text
           style={{
             fontSize: 20,
@@ -81,7 +86,8 @@ export default function DrivingAnalysisScreen() {
           </Text>
 
           <Switch
-            value={true}
+            value={cameraEnabled}
+            onValueChange={setCameraEnabled}
             trackColor={{ false: "#CBD5E1", true: "#FACC15" }}
             thumbColor="#FFFFFF"
           />
