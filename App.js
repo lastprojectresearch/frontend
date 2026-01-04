@@ -11,6 +11,7 @@ import Home from './screens/Home';
 import Onboarding1 from './screens/Onboarding1';
 import Onboarding2 from './screens/Onboarding2';
 import BottomNavigation from './components/BottomNavigation';
+import EmergencyScreen from './screens/Emergency';
 
 
 
@@ -34,7 +35,7 @@ function MainTabs() {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen
         name="Emergency"
-        component={PlaceholderScreen}
+        component={EmergencyScreen}
         options={{ title: 'Emergency Response' }}
       />
       <Tab.Screen name="Environment" component={Home} />
