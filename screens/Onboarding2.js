@@ -15,8 +15,8 @@ const Onboarding2 = () => {
   const navigation = useNavigation();
 
   const handleGetStarted = () => {
-    // Navigate to MainTabs and select the Home tab
-    navigation.replace('MainTabs', { screen: 'Home' });
+    // Navigate to WelcomeScreen
+    navigation.navigate('WelcomeScreen');
   };
 
   return (
