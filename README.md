@@ -15,7 +15,7 @@ Frontend Repository:
 
 The following diagram illustrates the end-to-end architecture of **ANZEN**, covering data acquisition, edge & cloud processing, and user interaction layers.
 
-![ANZEN Architecture Diagram](./architecture.png)
+![ANZEN Architecture Diagram](./structure.jpeg)
 
 **High-Level Flow:**
 
