@@ -2,7 +2,7 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView } from "react-nativ
 
 export default function LoginScreen({ navigation }) {
   const handleSignIn = () => {
-    // Add your login logic here (e.g., API call, authentication)
+    // Add your login logic here 
     // Then navigate to MainTabs (Home)
     navigation.replace('MainTabs', { screen: 'Home' });
   };
