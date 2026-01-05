@@ -15,7 +15,6 @@ const Onboarding2 = () => {
   const navigation = useNavigation();
 
   const handleGetStarted = () => {
-    // Navigate to WelcomeScreen
     navigation.navigate('WelcomeScreen');
   };
 
@@ -23,14 +22,12 @@ const Onboarding2 = () => {
     <View style={styles.container}>
       <StatusBar backgroundColor="#0F172A" barStyle="light-content" />
 
-      {/* Top Image */}
       <Image
         source={Onboarding2Image}
         style={styles.topImage}
         resizeMode="contain"
       />
 
-      {/* Main Text */}
       <Text style={styles.title}>ANZEN</Text>
       <Text style={styles.subtitle}>AI That Watches the Road for You</Text>
       <Text style={styles.description}>
@@ -38,7 +35,6 @@ const Onboarding2 = () => {
         conditions — with automatic emergency response in critical situations.
       </Text>
 
-      {/* Get Started Button */}
       <TouchableOpacity
         style={styles.button}
         onPress={handleGetStarted}

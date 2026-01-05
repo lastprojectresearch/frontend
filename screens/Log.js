@@ -8,11 +8,18 @@ import {
 } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 
-/* ---------------- SPEED METER ---------------- */
+/* Speed meter */
 const SpeedMeter = ({ speed }) => {
+  const isOverSpeed = speed > 120;
+
   return (
     <View style={styles.meterWrapper}>
-      <View style={styles.meterCircle}>
+      <View
+        style={[
+          styles.meterCircle,
+          { borderColor: isOverSpeed ? '#EF4444' : '#22C55E' },
+        ]}
+      >
         <View style={styles.meterInner}>
           <Text style={styles.meterValue}>{speed}</Text>
           <Text style={styles.meterUnit}>km/h</Text>
@@ -23,10 +30,11 @@ const SpeedMeter = ({ speed }) => {
   );
 };
 
+
 const formatTime = (hour) =>
   `${hour.toString().padStart(2, '0')}:00`;
 
-/* ---------------- MAIN SCREEN ---------------- */
+/*  Main screen */
 export default function LogScreen() {
   const [timeLabels, setTimeLabels] = useState([]);
   const [speedData, setSpeedData] = useState([]);
@@ -133,7 +141,7 @@ export default function LogScreen() {
   );
 }
 
-/* ---------------- STYLES ---------------- */
+/*  Styles */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
