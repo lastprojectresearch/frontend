@@ -84,6 +84,7 @@ export default function App() {
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         <Stack.Screen name="AlertsWarningsScreen" component={AlertsWarningsScreen} />
         <Stack.Screen name="DrivingAnalysisScreen" component={DrivingAnalysisScreen} />
+        <Stack.Screen name="EmergencyScreen" component={EmergencyScreen} />
         {/* Step 2: Main app */}
         <Stack.Screen name="MainTabs" component={MainTabs} />
       </Stack.Navigator>
