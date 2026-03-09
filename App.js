@@ -15,13 +15,11 @@ import HomeScreen from './screens/HomeScreen';
 import MapScreen from './screens/MapScreen';
 import Homedriver from './screens/Homedriver';
 import ProfileScreen from './screens/ProfileScreen';
-import AlertsWarningsScreen from './screens/AlertsWarningsScreen';
-import DrivingAnalysisScreen from './screens/DrivingAnalysisScreen';
 import Register from './screens/register';
 import Login from './screens/Login';
 
 const Tab = createBottomTabNavigator();
-const RootStack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 const DriverStackNav = createNativeStackNavigator();  // separate instance
 
 function DriverStack() {
@@ -29,8 +27,6 @@ function DriverStack() {
     <DriverStackNav.Navigator screenOptions={{ headerShown: false }}>
       <DriverStackNav.Screen name="HomedriverMain"        component={Homedriver} />
       <DriverStackNav.Screen name="HistoryScreen"         component={HistoryScreen} />
-      <DriverStackNav.Screen name="AlertsWarningsScreen"  component={AlertsWarningsScreen} />
-      <DriverStackNav.Screen name="DrivingAnalysisScreen" component={DrivingAnalysisScreen} />
       <DriverStackNav.Screen name="ProfileScreen"         component={ProfileScreen} />
     </DriverStackNav.Navigator>
   );
@@ -77,9 +73,8 @@ export default function App() {
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='WelcomeScreen' component={WelcomeScreen} />
         <Stack.Screen name="Homedriver" component={Homedriver} />
+        <Stack.Screen name="HistoryScreen" component={HistoryScreen} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
-        <Stack.Screen name="AlertsWarningsScreen" component={AlertsWarningsScreen} />
-        <Stack.Screen name="DrivingAnalysisScreen" component={DrivingAnalysisScreen} />
         <Stack.Screen name="EmergencyScreen" component={EmergencyScreen} />
         {/* Step 2: Main app */}
         <Stack.Screen name="MainTabs" component={MainTabs} />
