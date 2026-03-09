@@ -31,7 +31,7 @@ export default function Smap() {
     { latitude: 6.825306, longitude: 79.883667 },
   ];
 
-  // 📏 Create FILLED road danger patch (5m left/right, 10m length)
+  // road danger patch (5m left/right, 10m length)
   const createRoadPatch = (point) => {
     const forward = computeDestinationPoint(point, 5, 0);
     const backward = computeDestinationPoint(point, 5, 180);
@@ -60,7 +60,7 @@ export default function Smap() {
           longitudeDelta: 1.5,
         }}
       >
-        {/* 🔴 Blind bend danger road areas */}
+        {/* danger road areas */}
         {blindBends.map((point, index) => (
           <Polygon
             key={index}
@@ -75,19 +75,19 @@ export default function Smap() {
   );
 }
 
-/* 🎨 STYLES (THEME INSIDE CSS ONLY) */
+/* style */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8FAFC', // Background
+    backgroundColor: '#F8FAFC', 
   },
   map: {
     flex: 1,
   },
 
-  /* 🔴 Danger zone colors */
+ 
   dangerFill: {
-    color: 'rgba(239, 68, 68, 0.55)', // EF4444 (Red)
+    color: 'rgba(239, 68, 68, 0.55)', 
   },
   dangerStroke: {
     color: '#EF4444',
