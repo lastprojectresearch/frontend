@@ -9,6 +9,7 @@ import Onboarding1 from './screens/Onboarding1';
 import Onboarding2 from './screens/Onboarding2';
 import WelcomeScreen from './screens/WelcomeScreen';
 import BottomNavigation from './components/BottomNavigation';
+import EmergencyScreen from './screens/Emergency';
 import HistoryScreen from './screens/HistoryScreen';
 import HomeScreen from './screens/HomeScreen';
 import MapScreen from './screens/MapScreen';
@@ -47,7 +48,7 @@ function MainTabs() {
       <Tab.Screen name="Home"            component={HomeScreen} />
       <Tab.Screen
         name="Emergency"
-        component={PlaceholderScreen}
+        component={EmergencyScreen}
         options={{ title: 'Emergency Response' }}
       />
       <Tab.Screen name="Environment"     component={Home} />
@@ -68,14 +69,21 @@ function PlaceholderScreen({ route }) {
 export default function App() {
   return (
     <NavigationContainer>
-      <RootStack.Navigator screenOptions={{ headerShown: false }}>
-        <RootStack.Screen name="Onboarding1"   component={Onboarding1} />
-        <RootStack.Screen name="Onboarding2"   component={Onboarding2} />
-        <RootStack.Screen name="Register"      component={Register} />
-        <RootStack.Screen name="Login"         component={Login} />
-        <RootStack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-        <RootStack.Screen name="MainTabs"      component={MainTabs} />
-      </RootStack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {/* Step 1: Onboarding screens */}
+        <Stack.Screen name="Onboarding1" component={Onboarding1} />
+        <Stack.Screen name="Onboarding2" component={Onboarding2} />
+        <Stack.Screen name='Register' component={Register} />
+        <Stack.Screen name='Login' component={Login} />
+        <Stack.Screen name='WelcomeScreen' component={WelcomeScreen} />
+        <Stack.Screen name="Homedriver" component={Homedriver} />
+        <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+        <Stack.Screen name="AlertsWarningsScreen" component={AlertsWarningsScreen} />
+        <Stack.Screen name="DrivingAnalysisScreen" component={DrivingAnalysisScreen} />
+        <Stack.Screen name="EmergencyScreen" component={EmergencyScreen} />
+        {/* Step 2: Main app */}
+        <Stack.Screen name="MainTabs" component={MainTabs} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
