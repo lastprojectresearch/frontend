@@ -9,7 +9,7 @@ export default function Smap() {
   const [location, setLocation] = useState(null);
 
 
-  // 🔴 Blind bend coordinates (Kandy → Panadura)
+  // Blind bend coordinates (Kandy → Panadura)
   const blindBends = [
     { latitude: 7.268417, longitude: 80.597861 },
     { latitude: 7.267806, longitude: 80.596722 },
@@ -38,7 +38,7 @@ export default function Smap() {
     //{ latitude: 6.916054, longitude: 79.973289 },
   ];
 
-  /// 📏 Create filled road danger patch
+  /// Create filled road danger patch
   const createRoadPatch = (point) => {
     const forward = computeDestinationPoint(point, 5, 0);
     const backward = computeDestinationPoint(point, 5, 180);
@@ -56,7 +56,7 @@ export default function Smap() {
     ];
   };
 
-  // 📍 Get Live GPS Location
+  // Get Live GPS Location
   const getLocation = async () => {
 
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -78,7 +78,7 @@ export default function Smap() {
     });
   };
 
-  // 🔄 Update location every 3 seconds
+  // Update location every 3 seconds
   useEffect(() => {
 
     getLocation();
@@ -104,7 +104,7 @@ export default function Smap() {
         }}
       >
 
-        {/* 🔴 Blind bend danger road areas */}
+        {/* Blind bend danger road areas */}
         {blindBends.map((point, index) => (
           <Polygon
             key={index}
@@ -115,7 +115,7 @@ export default function Smap() {
           />
         ))}
 
-        {/* 🔵 Driver live location */}
+        {/* Driver live location */}
         {location && (
           <Marker
             coordinate={{
@@ -133,7 +133,7 @@ export default function Smap() {
   );
 }
 
-/* 🎨 STYLES */
+/* sTYLES */
 const styles = StyleSheet.create({
 
   container: {
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  /* 🔴 Danger zone colors */
+  /* Danger zone colors */
   dangerFill: {
     color: 'rgba(239, 68, 68, 0.55)',
   },

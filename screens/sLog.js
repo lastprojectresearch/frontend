@@ -179,7 +179,7 @@ export default function LogScreen() {
 
       {lastDangerousSign && (
         <View style={styles.dangerCard}>
-          <Text style={styles.dangerTitle}>⚠️ Last Dangerous Detection</Text>
+          <Text style={styles.dangerTitle}>Last Dangerous Detection</Text>
           <View style={styles.dangerRow}>
             <Text style={styles.dangerLabel}>Sign</Text>
             <Text style={styles.dangerValue}>
