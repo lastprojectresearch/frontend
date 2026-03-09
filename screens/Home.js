@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Log from './Log';
+import Log from './sLog';
 import Smap from './Smap';
 
 const Stack = createNativeStackNavigator();
