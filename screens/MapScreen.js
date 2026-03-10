@@ -14,7 +14,7 @@ const HAZARD_COLORS = {
   pothole: '#800080',
 };
 
-const API_URL = 'http://192.168.8.117:8000';
+const API_URL = 'http://10.72.151.158:8000';
 
 export default function MapScreen() {
   const [location, setLocation] = useState(null);
@@ -37,8 +37,8 @@ export default function MapScreen() {
               type: h.hazard_type,
               latitude: Number(h.location.coordinates[1]),
               longitude: Number(h.location.coordinates[0]),
-              timestamp: new Date(h.timestamp.$date ? h.timestamp.$date : h.timestamp),
-              expiration: new Date(h.expiration.$date ? h.expiration.$date : h.expiration),
+              timestamp: h.timestamp,
+              expiration: h.expiration,
               confidence: h.confidence,
               accept_count: h.accept_count,
               reject_count: h.reject_count,
@@ -78,7 +78,9 @@ export default function MapScreen() {
   }, [fetchHazards]);
 
   useEffect(() => {
-    const socket = io(API_URL);
+    const socket = io(API_URL, 
+      { transports: ['websocket'],
+      });
     socket.on('connect', () => {
       console.log('Socket connected');
     });
