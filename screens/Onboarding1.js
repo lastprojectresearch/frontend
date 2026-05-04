@@ -8,11 +8,10 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-// Correct image import
 const OnboardingImage = require('../assets/onboarding_screen_1.jpeg');
 
 const Onboarding1 = () => {
-  const navigation = useNavigation(); // ✅ Must call inside component
+  const navigation = useNavigation(); 
   const loadingAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -21,9 +20,9 @@ const Onboarding1 = () => {
       duration: 3000,
       useNativeDriver: false,
     }).start(() => {
-      navigation.replace('Onboarding2'); // ✅ Navigate after animation
+      navigation.replace('Onboarding2'); // 
     });
-  }, [loadingAnim, navigation]); // ✅ include navigation in dependency array
+  }, [loadingAnim, navigation]); // 
 
   const loadingWidth = loadingAnim.interpolate({
     inputRange: [0, 1],

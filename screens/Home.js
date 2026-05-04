@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Log from './Log';
+import Log from './sLog';
 import Smap from './Smap';
 
 const Stack = createNativeStackNavigator();
@@ -21,10 +21,10 @@ function Home({ navigation }) {
         style={{
           fontSize: 24,
           fontWeight: 'bold',
-          marginBottom: 40,
+          marginBottom: 120,
         }}
       >
-        Driver Safety System
+        Data Analytics & Mapping
       </Text>
 
       {/* LOG BUTTON */}
@@ -33,13 +33,13 @@ function Home({ navigation }) {
         style={{
           width: 200,
           padding: 15,
-          backgroundColor: '#1e90ff',
+          backgroundColor: '#22C55E',
           borderRadius: 10,
-          marginBottom: 20,
+          marginBottom: 60,
           alignItems: 'center',
         }}
       >
-        <Text style={{ color: '#fff', fontSize: 18 }}>Log</Text>
+        <Text style={{ color: '#0F172A',fontWeight: 'bold', fontSize: 18 }}>Log</Text>
       </TouchableOpacity>
 
       {/* MAP BUTTON */}
@@ -48,12 +48,12 @@ function Home({ navigation }) {
         style={{
           width: 200,
           padding: 15,
-          backgroundColor: '#e53935',
+          backgroundColor: '#22C55E',
           borderRadius: 10,
           alignItems: 'center',
         }}
       >
-        <Text style={{ color: '#fff', fontSize: 18 }}>Map</Text>
+        <Text style={{ color: '#0F172A',fontWeight: 'bold', fontSize: 18 }}>Map</Text>
       </TouchableOpacity>
     </View>
   );

@@ -279,5 +279,5 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   footerText: { color: '#6b7280' },
-  
+
 });

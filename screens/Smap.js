@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import MapView, { Polygon } from 'react-native-maps';
+import MapView, { Polygon, Marker } from 'react-native-maps';
+import * as Location from 'expo-location';
 import { computeDestinationPoint } from 'geolib';
 
 export default function Smap() {
 
-  // 🔴 Blind bend coordinates (Kandy → Panadura)
+  const [location, setLocation] = useState(null);
+
+
+  // Blind bend coordinates (Kandy → Panadura)
   const blindBends = [
     { latitude: 7.268417, longitude: 80.597861 },
     { latitude: 7.267806, longitude: 80.596722 },
@@ -29,9 +33,12 @@ export default function Smap() {
     { latitude: 6.907750, longitude: 79.929194 },
     { latitude: 6.856528, longitude: 79.892583 },
     { latitude: 6.825306, longitude: 79.883667 },
+    { latitude: 6.961481, longitude:79.868271},
+    { latitude: 6.966789, longitude:79.871981},
+    //{ latitude: 6.916054, longitude: 79.973289 },
   ];
 
-  // 📏 Create FILLED road danger patch (5m left/right, 10m length)
+  /// Create filled road danger patch
   const createRoadPatch = (point) => {
     const forward = computeDestinationPoint(point, 5, 0);
     const backward = computeDestinationPoint(point, 5, 180);
@@ -49,18 +56,55 @@ export default function Smap() {
     ];
   };
 
+  // Get Live GPS Location
+  const getLocation = async () => {
+
+    let { status } = await Location.requestForegroundPermissionsAsync();
+
+    if (status !== 'granted') {
+      console.log("Location permission denied");
+      return;
+    }
+
+    let loc = await Location.getCurrentPositionAsync({
+      accuracy: Location.Accuracy.High
+    });
+
+    setLocation({
+      latitude: loc.coords.latitude,
+      longitude: loc.coords.longitude,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    });
+  };
+
+  // Update location every 3 seconds
+  useEffect(() => {
+
+    getLocation();
+
+    const interval = setInterval(() => {
+      getLocation();
+    }, 3000);
+
+    return () => clearInterval(interval);
+
+  }, []);
+
   return (
     <View style={styles.container}>
+
       <MapView
         style={styles.map}
-        initialRegion={{
+        region={location || {
           latitude: 7.15,
           longitude: 80.30,
           latitudeDelta: 1.5,
           longitudeDelta: 1.5,
         }}
       >
-        {/* 🔴 Blind bend danger road areas */}
+
+        {/* Blind bend danger road areas */}
         {blindBends.map((point, index) => (
           <Polygon
             key={index}
@@ -70,28 +114,44 @@ export default function Smap() {
             strokeWidth={10}
           />
         ))}
+
+        {/* Driver live location */}
+        {location && (
+          <Marker
+            coordinate={{
+              latitude: location.latitude,
+              longitude: location.longitude
+            }}
+            title="Your Location"
+            pinColor="blue"
+          />
+        )}
+
       </MapView>
+
     </View>
   );
 }
 
-/* 🎨 STYLES (THEME INSIDE CSS ONLY) */
+/* sTYLES */
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
-    backgroundColor: '#F8FAFC', // Background
+    backgroundColor: '#F8FAFC',
   },
+
   map: {
     flex: 1,
   },
 
-  /* 🔴 Danger zone colors */
+  /* Danger zone colors */
   dangerFill: {
-    color: 'rgba(239, 68, 68, 0.55)', // EF4444 (Red)
+    color: 'rgba(239, 68, 68, 0.55)',
   },
+
   dangerStroke: {
     color: '#EF4444',
   },
 
-  
 });
