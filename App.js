@@ -9,7 +9,7 @@ import Onboarding1 from './screens/Onboarding1';
 import Onboarding2 from './screens/Onboarding2';
 import WelcomeScreen from './screens/WelcomeScreen';
 import BottomNavigation from './components/BottomNavigation';
-import Emergency from './screens/Emergency';import EmergencyScreen from './screens/Emergency';
+import EmergencyScreen from './screens/Emergency';
 import HistoryScreen from './screens/HistoryScreen';
 import HomeScreen from './screens/HomeScreen';
 import MapScreen from './screens/MapScreen';
@@ -44,7 +44,7 @@ function MainTabs() {
       <Tab.Screen name="Home"            component={HomeScreen} />
       <Tab.Screen
         name="Emergency"
-        component={PlaceholderScreen}
+        component={EmergencyScreen}
         options={{ title: 'Emergency Response' }}
       />
       <Tab.Screen name="Environment"     component={Home} />
