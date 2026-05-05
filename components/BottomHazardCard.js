@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal, Pressable, Alert, Image } from 'react-native';
 
-/* IMAGE IMPORTS */
+
 const policeImages = [
   require('../assets/police1.jpg'),
   require('../assets/police2.jpg'),
@@ -18,11 +18,11 @@ const potholeImages = [
   require('../assets/pothole3.jpg'),
 ];
 
-// ── Colombo time formatter (UTC+5:30) ──────────────────────────────────────
+
 const formatColomboTime = (isoString) => {
   if (!isoString) return 'Unknown';
 
-  // Append 'Z' if no timezone is specified to treat as UTC
+
   if (!isoString.endsWith('Z') && !/\+\d{2}:\d{2}/.test(isoString) && !/\-\d{2}:\d{2}/.test(isoString)) {
     isoString += 'Z';
   }
@@ -30,7 +30,7 @@ const formatColomboTime = (isoString) => {
   const date = new Date(isoString);
   if (isNaN(date.getTime())) return 'Unknown';
 
-  // Use local time methods directly (assumes device timezone is UTC+5:30)
+
   const year    = date.getFullYear();
   const month   = date.getMonth();
   const day     = date.getDate();
@@ -50,7 +50,7 @@ const formatColomboTime = (isoString) => {
 
   return `${MONTHS[month]} ${day}, ${year} at ${h12}:${mm}:${ss} ${ampm}`;
 };
-// ──────────────────────────────────────────────────────────────────────────
+
 
 export default function BottomHazardCard({ selectedHazard, onClose, calculateDistance, onVote }) {
 

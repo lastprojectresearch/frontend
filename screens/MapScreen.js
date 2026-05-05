@@ -14,7 +14,7 @@ const HAZARD_COLORS = {
   pothole: '#800080',
 };
 
-const API_URL = 'http://10.63.70.158:8000';   // ← Update this IP when needed
+const API_URL = 'http://10.63.70.158:8000';   
 
 export default function MapScreen() {
   const [location, setLocation] = useState(null);
@@ -22,7 +22,7 @@ export default function MapScreen() {
   const [greeting, setGreeting] = useState('');
   const [hazards, setHazards] = useState([]);
   const [selectedHazard, setSelectedHazard] = useState(null);
-  const [nearbyAlert, setNearbyAlert] = useState(null); // For 100m alert
+  const [nearbyAlert, setNearbyAlert] = useState(null); 
 
   const mapRef = useRef(null);
   const lastAlertTime = useRef(0);
@@ -109,7 +109,7 @@ export default function MapScreen() {
   useEffect(() => {
     const socket = io(API_URL, { transports: ['websocket'] });
 
-    socket.on('connect', () => console.log('✅ Socket connected'));
+    socket.on('connect', () => console.log(' Socket connected'));
     socket.on('connect_error', (err) => console.log('Socket error:', err.message));
 
     socket.on('new-hazard', () => {
